@@ -28,16 +28,7 @@ public class HelloServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //logger.info("Hello world!");
-        //resp.getWriter().write("Hello world!");
-
-        /*logger.info("Got request with parameters: " + req.getParameterMap());
-        String name = Optional.ofNullable(req.getParameter(NAME_PARAM)).orElse("world");
-        resp.getWriter().write("Hello " + name + "!");*/
-
-        //String name = (req.getParameter(NAME_PARAM) == null) ? "world" : req.getParameter(NAME_PARAM);
-        //resp.getWriter().write("Hello " + name + "!");
-
+        logger.info("Got request with parameters: " + req.getParameterMap());
         resp.getWriter().write(service.prepreGreeting(req.getParameter(NAME_PARAM)));
     }
 }
