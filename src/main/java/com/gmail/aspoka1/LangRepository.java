@@ -13,7 +13,7 @@ public class LangRepository {
         languages.add(new Lang(2L, "Siemanko", "pl"));
     }
 
-    Optional<Lang> getLanguagesByid(Long id){
+    Optional<Lang> getLanguagesById(Long id){
         return languages.stream().filter(l -> l.getId().equals(id)).findFirst();
     }
 }
