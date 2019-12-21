@@ -7,13 +7,12 @@ import java.util.Optional;
 public class LangRepository {
     List<Lang> languages;
 
-    public LangRepository() {
-        languages = new ArrayList<>();
-        languages.add(new Lang(1L, "Hello", "eng"));
-        languages.add(new Lang(2L, "Siemanko", "pl"));
-    }
-
-    Optional<Lang> getLanguagesById(Long id){
-        return languages.stream().filter(l -> l.getId().equals(id)).findFirst();
+    Optional<Lang> getLanguagesById(Integer id){
+        var session = HibernateUtil.getSessionFactory().openSession();
+        var transaction = session.beginTransaction();
+        var result = session.get(Lang.class, id);
+        transaction.commit();
+        session.close();
+        return Optional.ofNullable(result);
     }
 }

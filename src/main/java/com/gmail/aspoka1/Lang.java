@@ -1,17 +1,35 @@
 package com.gmail.aspoka1;
 
+
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
+
+@Entity
+@Table( name = "languages" )
 public class Lang {
-    private Long id;
+    @Id
+    @GeneratedValue(generator="increment")
+    @GenericGenerator(name="increment", strategy = "increment")
+    private Integer id;
     private String greeting;
     private String code;
 
-    public Lang(Long id, String greeting, String code) {
+    /**
+     * Hibernate needs it
+     */
+    @SuppressWarnings("unused")
+    Lang() {
+
+    }
+
+    public Lang(Integer id, String greeting, String code) {
         this.id = id;
         this.greeting = greeting;
         this.code = code;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 

@@ -4,3 +4,5 @@
 src/test/
 pom.xml
 task-list.iml
+db.mv.db
+db.trace.db
